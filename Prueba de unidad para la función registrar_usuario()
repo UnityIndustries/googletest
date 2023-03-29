@@ -1,0 +1,19 @@
+#include <gtest/gtest.h>
+
+TEST(registrar_usuario_test, agregar_usuario) {
+    struct Usuario usuarios[100];
+    int num_usuarios = 0;
+
+    // Agregar un nuevo usuario
+    struct Usuario nuevo_usuario = {"Juan", 1, "contrasena123", "estudiante"};
+    registrar_usuario(usuarios, &num_usuarios, nuevo_usuario);
+
+    // Verificar que el número de usuarios ha aumentado
+    EXPECT_EQ(num_usuarios, 1);
+
+    // Verificar que el usuario agregado está en la lista de usuarios
+    EXPECT_STREQ(usuarios[0].nombre, "Juan");
+    EXPECT_EQ(usuarios[0].id, 1);
+    EXPECT_STREQ(usuarios[0].contrasena, "contrasena123");
+    EXPECT_STREQ(usuarios[0].rol, "estudiante");
+}
