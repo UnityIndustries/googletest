@@ -1,0 +1,17 @@
+void test_registrar_curso() {
+    struct Curso cursos[50];
+    int num_cursos = 0;
+
+    // Agregar un nuevo curso
+    struct Curso nuevo_curso = {"Matemáticas", 100, "Curso de matemáticas avanzadas", "Lunes y miércoles de 8:00 a 10:00"};
+    registrar_curso(cursos, &num_cursos, nuevo_curso);
+
+    // Verificar que el número de cursos ha aumentado
+    assert(num_cursos == 1);
+
+    // Verificar que el curso agregado está en la lista de cursos
+    assert(strcmp(cursos[0].nombre, "Matemáticas") == 0);
+    assert(cursos[0].codigo == 100);
+    assert(strcmp(cursos[0].descripcion, "Curso de matemáticas avanzadas") == 0);
+    assert(strcmp(cursos[0].horario, "Lunes y miércoles de 8:00 a 10:00") == 0);
+}
